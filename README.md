@@ -41,6 +41,8 @@ spring.jpa.show-sql=true
 
 ##  Endpoints principales
 
+http://localhost:8081/api/productos
+
 | Método | Endpoint                                       | Descripción                         |
 |--------|------------------------------------------------|-------------------------------------|
 | GET    | `/api/productos`                               | Listar todos los productos          |
