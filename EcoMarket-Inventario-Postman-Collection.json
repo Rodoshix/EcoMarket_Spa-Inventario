@@ -1,0 +1,129 @@
+{
+  "info": {
+    "name": "EcoMarket - Inventario Microservicio",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Listar Productos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/productos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "productos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Crear Producto",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Detergente Eco\",\n  \"descripcion\": \"Detergente biodegradable\",\n  \"categoria\": \"Limpieza\",\n  \"cantidadEnStock\": 100,\n  \"precioUnitario\": 2990,\n  \"proveedor\": \"BioClean SPA\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/productos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "productos"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar por Nombre",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/productos/buscar/nombre?nombre=Detergente Eco",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "productos",
+            "buscar",
+            "nombre"
+          ],
+          "query": [
+            {
+              "key": "nombre",
+              "value": "Detergente Eco"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Buscar por Categor\u00eda",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/productos/buscar/categoria?categoria=Limpieza",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "productos",
+            "buscar",
+            "categoria"
+          ],
+          "query": [
+            {
+              "key": "categoria",
+              "value": "Limpieza"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Eliminar Producto por ID",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8081/api/productos/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "productos",
+            "1"
+          ]
+        }
+      }
+    }
+  ]
+}
