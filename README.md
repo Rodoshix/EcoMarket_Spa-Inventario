@@ -35,6 +35,8 @@ spring.datasource.password=
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+
+server.port=8082
 ```
 
 ---
