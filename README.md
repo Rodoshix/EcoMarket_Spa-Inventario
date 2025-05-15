@@ -59,7 +59,7 @@ http://localhost:8081/api/productos
 ## Pruebas con Postman
 
 Importa la colección incluida:  
-**`EcoMarket-Inventario-Postman-Collection.json`**
+**`EcoMarket - Inventario-service.postman_collection.json`**
 
 Incluye pruebas para:
 
