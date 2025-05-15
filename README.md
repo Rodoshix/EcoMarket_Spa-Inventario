@@ -1,4 +1,4 @@
-# EcoMarket SPA - Microservicio de Inventario Proyecto Semestral "Ficticio"
+# EcoMarket SPA - Microservicio de Inventario
 
 Este repositorio contiene el microservicio de **gestión de inventario** para el sistema EcoMarket SPA. Este componente permite registrar, consultar, actualizar y eliminar productos del catálogo utilizando **Spring Boot**, **Spring Data JPA** y **MySQL**.
 
