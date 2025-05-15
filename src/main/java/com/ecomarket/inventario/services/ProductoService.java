@@ -26,10 +26,23 @@ public class ProductoService {
         return productoRepository.findById(id);
     }
 
-    // Guardar un nuevo producto o actualizar uno existente
-    public Producto guardarProducto(Producto producto) {
-        return productoRepository.save(producto);
+    // Guardar un nuevo producto o actualizar la cantidad si ya existe
+    public Producto guardarProducto(Producto nuevoProducto) {
+        Optional<Producto> existente = productoRepository.findByNombreAndDescripcion(
+            nuevoProducto.getNombre(), nuevoProducto.getDescripcion()
+    );
+
+    if (existente.isPresent()) {
+        Producto productoExistente = existente.get();
+        productoExistente.setCantidadEnStock(
+                productoExistente.getCantidadEnStock() + nuevoProducto.getCantidadEnStock()
+        );
+            return productoRepository.save(productoExistente);
+        } else {
+            return productoRepository.save(nuevoProducto);
+        }
     }
+
 
     // Eliminar producto por ID
     public void eliminarProducto(Long id) {
@@ -41,7 +54,7 @@ public class ProductoService {
         return productoRepository.findByNombre(nombre);
     }
 
-    // Buscar por categoría
+    // Buscar por categorÃa
     public List<Producto> buscarPorCategoria(String categoria) {
         return productoRepository.findByCategoria(categoria);
     }
