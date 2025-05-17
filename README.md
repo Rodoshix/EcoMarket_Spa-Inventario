@@ -43,8 +43,6 @@ server.port=8082
 
 ##  Endpoints principales
 
-http://localhost:8081/api/productos
-
 | Método | Endpoint                                       | Descripción                         |
 |--------|------------------------------------------------|-------------------------------------|
 | GET    | `/api/productos`                               | Listar todos los productos          |
