@@ -2,6 +2,7 @@ package com.ecomarket.inventario.controller;
 
 import com.ecomarket.inventario.model.Producto;
 import com.ecomarket.inventario.services.ProductoService;
+import com.ecomarket.inventario.dto.ActualizarStockDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,5 +58,11 @@ public class ProductoController {
     @GetMapping("/buscar/categoria")
     public ResponseEntity<List<Producto>> buscarPorCategoria(@RequestParam String categoria) {
         return ResponseEntity.ok(productoService.buscarPorCategoria(categoria));
+    }
+
+    @PostMapping("/stock")
+    public ResponseEntity<String> actualizarStock(@RequestBody ActualizarStockDTO dto) {
+        productoService.descontarStock(dto.getIdProducto(), dto.getCantidadVendida());
+        return ResponseEntity.ok("Stock actualizado correctamente");
     }
 }
