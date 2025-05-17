@@ -26,21 +26,41 @@ public class ProductoService {
         return productoRepository.findById(id);
     }
 
-    // Guardar un nuevo producto o actualizar la cantidad si ya existe
+    public Producto buscarPorIdObligatorio(Long id) {
+        return productoRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+    }
+
+    // Guardar un nuevo producto o sumar stock si ya existe
     public Producto guardarProducto(Producto nuevoProducto) {
         Optional<Producto> existente = productoRepository.findByNombreAndDescripcion(
-            nuevoProducto.getNombre(), nuevoProducto.getDescripcion()
-    );
-
-    if (existente.isPresent()) {
-        Producto productoExistente = existente.get();
-        productoExistente.setCantidadEnStock(
-                productoExistente.getCantidadEnStock() + nuevoProducto.getCantidadEnStock()
+                nuevoProducto.getNombre(), nuevoProducto.getDescripcion()
         );
+
+        if (existente.isPresent()) {
+            Producto productoExistente = existente.get();
+            productoExistente.setCantidadEnStock(
+                    productoExistente.getCantidadEnStock() + nuevoProducto.getCantidadEnStock()
+            );
             return productoRepository.save(productoExistente);
         } else {
             return productoRepository.save(nuevoProducto);
         }
+    }
+
+    // Restar stock para una venta
+    public void descontarStock(Long idProducto, int cantidadVendida) {
+        Producto producto = productoRepository.findById(idProducto)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+
+        int nuevoStock = producto.getCantidadEnStock() - cantidadVendida;
+
+        if (nuevoStock < 0) {
+            throw new RuntimeException("Stock insuficiente");
+        }
+
+        producto.setCantidadEnStock(nuevoStock);
+        productoRepository.save(producto);
     }
 
 
