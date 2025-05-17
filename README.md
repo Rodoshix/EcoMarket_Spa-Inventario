@@ -41,6 +41,22 @@ server.port=8082
 
 ---
 
+## Funcionalidades
+
+- Registrar productos nuevos
+- Sumar stock a productos existentes
+- Buscar productos por ID, nombre o categoría
+- Eliminar productos
+- Descontar stock desde `venta-service` al confirmar una venta
+
+---
+
+## Integración con venta-service
+
+Cuando se registra una venta, el microservicio `venta-service` llama a este endpoint para descontar stock. El método `guardarProducto(...)` **no debe usarse para ventas**.
+
+---
+
 ##  Endpoints principales
 
 | Método | Endpoint                                       | Descripción                         |
